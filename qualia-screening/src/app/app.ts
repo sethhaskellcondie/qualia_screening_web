@@ -8,5 +8,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('qualia-screening');
+  protected message = signal('Hello Qualia');
+
+  updateMessage() {
+    this.message.set('This is Seth Condie');
+  }
 }
