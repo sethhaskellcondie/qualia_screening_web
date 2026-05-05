@@ -1,16 +1,23 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TickerService } from './TickerService';
+import {SearchComponent} from './components/search/search';
+import {StockResult, TickerServiceWrapper} from './services/ticker';
+import {WatchedComponent} from './components/watched/watched';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    SearchComponent,
+    WatchedComponent
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected message = signal('Hello Qualia');
+  constructor(private tickerService: TickerServiceWrapper) {
+  }
 
-  updateMessage() {
-    this.message.set('This is Seth Condie');
+  onStockSelected(stock: StockResult): void {
+    this.tickerService.watch(stock.symbol);
   }
 }

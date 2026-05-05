@@ -1,0 +1,32 @@
+<div>
+  @if (watchedStocks.length > 0) {
+    <table>
+      <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Ratio</th>
+        <th>Market Cap</th>
+        <th>Shares Outstanding</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (stock of watchedStocks; track stock.symbol) {
+          <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ (stock.lastPrice / 100).toFixed(2) }}</td>
+            <td>{{ stock.priceToEarnings }}</td>
+            <td>{{ (stock.marketCap / 100).toLocaleString() }}</td>
+            <td>{{ stock.sharesOutstanding.toLocaleString() }}</td>
+<!--            add delete button here-->
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  } @else {
+    <p>No stocks watched</p>
+  }
+</div>

@@ -1,6 +1,5 @@
 <main>
-  <h1>{{ message() }}</h1>
-  <button (click)="updateMessage()">Click me</button>
+  <h1>Stocks!</h1>
+  <app-search (stockSelected)="onStockSelected($event)"></app-search>
+  <app-watched></app-watched>
 </main>
-
-<router-outlet />
